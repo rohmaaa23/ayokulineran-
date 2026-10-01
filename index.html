@@ -1,0 +1,816 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rasa Nusantara - Blog Kuliner</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5eee6;
+            color: #4b382a;
+            line-height: 1.7;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            background-color: #5a4435;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            color: #f8f1e8;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: #f8f1e8;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #d6b89c;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            height: 480px;
+            background:
+                linear-gradient(
+                    rgba(66, 48, 36, 0.65),
+                    rgba(66, 48, 36, 0.65)
+                ),
+                url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 750px;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #a77b55;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+        }
+
+        .button:hover {
+            background-color: #8d6545;
+        }
+
+        /* ================= SECTION ================= */
+
+        .container {
+            width: 84%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #5a4435;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #806c5b;
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        /* ================= POST ================= */
+
+        .posts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .post {
+            background-color: #fffaf5;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(75, 56, 42, 0.12);
+            transition: 0.3s;
+        }
+
+        .post:hover {
+            transform: translateY(-8px);
+        }
+
+        .post img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .post-content {
+            padding: 23px;
+        }
+
+        .post h3 {
+            color: #5a4435;
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .post p {
+            color: #705d4c;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .label {
+            display: inline-block;
+            background-color: #dfc9b4;
+            color: #5a4435;
+            padding: 5px 13px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background-color: #e7d7c7;
+            text-align: center;
+        }
+
+        .about-box {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .about h2 {
+            color: #5a4435;
+            font-size: 31px;
+            margin-bottom: 15px;
+        }
+
+        /* ================= BUSINESS ================= */
+
+        .business {
+            background-color: #f9f4ee;
+        }
+
+        .business-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .business-card {
+            background-color: #fffaf5;
+            padding: 25px;
+            border-radius: 12px;
+            border-top: 5px solid #a77b55;
+            box-shadow: 0 4px 12px rgba(75, 56, 42, 0.08);
+        }
+
+        .business-card h3 {
+            color: #5a4435;
+            margin-bottom: 12px;
+        }
+
+        .business-card p {
+            color: #705d4c;
+            font-size: 14px;
+        }
+
+        /* ================= COMMENT ================= */
+
+        .comment-section {
+            background-color: #e7d7c7;
+            text-align: center;
+        }
+
+        .comment-box {
+            max-width: 700px;
+            margin: auto;
+            background-color: #fffaf5;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        .comment-box h2 {
+            color: #5a4435;
+            margin-bottom: 10px;
+        }
+
+        .comment-box p {
+            color: #705d4c;
+            margin-bottom: 20px;
+        }
+
+        .comment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            padding: 12px;
+            border: 1px solid #d1bda9;
+            border-radius: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fffdf9;
+        }
+
+        .comment-form textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .comment-form button {
+            border: none;
+            background-color: #6b503d;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .comment-form button:hover {
+            background-color: #8d6545;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background-color: #5a4435;
+            color: #f8f1e8;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer h3 {
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #dfcbbb;
+            font-size: 14px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .posts {
+                grid-template-columns: 1fr;
+            }
+
+            .business-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav>
+
+        <div class="logo">
+            Rasa Nusantara
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#postingan">Postingan</a></li>
+            <li><a href="#bisnis">Bisnis Kuliner</a></li>
+            <li><a href="#komentar">Komentar</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Rasa Nusantara</h1>
+
+            <p>
+                Menjelajahi kelezatan kuliner Indonesia,
+                dari makanan tradisional hingga makanan kekinian.
+            </p>
+
+            <a href="#postingan" class="button">
+                Jelajahi Postingan
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= POSTINGAN ================= -->
+
+    <section id="postingan">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Postingan Kuliner</h2>
+
+                <p>
+                    Temukan berbagai cerita dan informasi menarik
+                    seputar makanan Indonesia.
+                </p>
+
+            </div>
+
+
+            <div class="posts">
+
+
+                <!-- POSTINGAN 1 -->
+
+                <article class="post">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?auto=format&fit=crop&w=900&q=80"
+                        alt="Nasi Goreng">
+
+                    <div class="post-content">
+
+                        <span class="label">
+                            Kuliner Indonesia
+                        </span>
+
+                        <h3>
+                            Nasi Goreng: Sederhana tetapi Menggugah Selera
+                        </h3>
+
+                        <p>
+                            Nasi goreng merupakan salah satu makanan
+                            yang sangat populer di Indonesia. Makanan
+                            ini dapat ditemukan dengan berbagai variasi,
+                            mulai dari nasi goreng kampung hingga nasi
+                            goreng dengan berbagai topping.
+                        </p>
+
+                        <p>
+                            Perpaduan nasi, bumbu, telur, sayuran,
+                            dan kecap menghasilkan rasa yang sederhana
+                            tetapi tetap nikmat.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- POSTINGAN 2 -->
+
+                <article class="post">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+                        alt="Rendang">
+
+                    <div class="post-content">
+
+                        <span class="label">
+                            Makanan Tradisional
+                        </span>
+
+                        <h3>
+                            Rendang dan Kekayaan Rempah Nusantara
+                        </h3>
+
+                        <p>
+                            Rendang merupakan makanan khas Minangkabau
+                            yang terkenal dengan cita rasanya yang kaya.
+                            Proses memasaknya membutuhkan waktu yang cukup
+                            lama agar bumbu dapat meresap dengan sempurna.
+                        </p>
+
+                        <p>
+                            Penggunaan santan dan berbagai rempah menjadi
+                            salah satu ciri khas yang membuat rendang
+                            memiliki rasa yang kuat dan unik.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- POSTINGAN 3 -->
+
+                <article class="post">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=900&q=80"
+                        alt="Sate">
+
+                    <div class="post-content">
+
+                        <span class="label">
+                            Jajanan Nusantara
+                        </span>
+
+                        <h3>
+                            Sate: Kuliner Favorit yang Selalu Dicari
+                        </h3>
+
+                        <p>
+                            Sate menjadi salah satu makanan yang mudah
+                            ditemukan di berbagai daerah Indonesia.
+                            Daging yang dibakar menggunakan arang
+                            menghasilkan aroma yang khas.
+                        </p>
+
+                        <p>
+                            Biasanya sate disajikan dengan bumbu kacang,
+                            kecap, lontong, atau nasi sehingga cocok
+                            dinikmati sebagai makanan utama.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- POSTINGAN 4 -->
+
+                <article class="post">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=80"
+                        alt="Jajanan">
+
+                    <div class="post-content">
+
+                        <span class="label">
+                            Street Food
+                        </span>
+
+                        <h3>
+                            Menikmati Street Food di Indonesia
+                        </h3>
+
+                        <p>
+                            Street food menjadi bagian yang menarik dari
+                            kehidupan kuliner masyarakat Indonesia.
+                            Banyak makanan sederhana yang justru memiliki
+                            cita rasa yang khas.
+                        </p>
+
+                        <p>
+                            Mulai dari gorengan, batagor, siomay hingga
+                            berbagai jajanan daerah dapat menjadi pilihan
+                            untuk menikmati kuliner dengan harga terjangkau.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- POSTINGAN 5 -->
+
+                <article class="post">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+                        alt="Dessert">
+
+                    <div class="post-content">
+
+                        <span class="label">
+                            Kuliner Kekinian
+                        </span>
+
+                        <h3>
+                            Tren Dessert dan Makanan Kekinian
+                        </h3>
+
+                        <p>
+                            Perkembangan media sosial membuat makanan
+                            kekinian semakin mudah dikenal. Tampilan
+                            makanan yang menarik sering menjadi daya
+                            tarik bagi pelanggan.
+                        </p>
+
+                        <p>
+                            Selain rasa, kreativitas dalam penyajian
+                            juga menjadi salah satu hal penting dalam
+                            perkembangan bisnis kuliner saat ini.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <!-- POSTINGAN 6 -->
+
+                <article class="post">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"
+                        alt="Kuliner Nusantara">
+
+                    <div class="post-content">
+
+                        <span class="label">
+                            Tips Kuliner
+                        </span>
+
+                        <h3>
+                            Tips Memilih Tempat Makan yang Menarik
+                        </h3>
+
+                        <p>
+                            Saat memilih tempat makan, bukan hanya rasa
+                            yang perlu diperhatikan. Kebersihan, harga,
+                            pelayanan, dan suasana tempat juga dapat
+                            memengaruhi pengalaman pelanggan.
+                        </p>
+
+                        <p>
+                            Dengan mempertimbangkan beberapa hal tersebut,
+                            kita dapat menemukan tempat makan yang sesuai
+                            dengan kebutuhan dan selera.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TENTANG BLOG ================= -->
+
+    <section class="about">
+
+        <div class="container">
+
+            <div class="about-box">
+
+                <h2>
+                    Tentang Rasa Nusantara
+                </h2>
+
+                <p>
+                    Rasa Nusantara merupakan blog kuliner yang dibuat
+                    untuk berbagi informasi, cerita, dan rekomendasi
+                    mengenai berbagai makanan Indonesia. Blog ini
+                    mengangkat kuliner tradisional maupun kuliner
+                    kekinian dengan tampilan yang sederhana dan
+                    nyaman untuk dibaca.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BISNIS KULINER ================= -->
+
+    <section class="business" id="bisnis">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Blog dan Bisnis Kuliner
+                </h2>
+
+                <p>
+                    Blog juga dapat dimanfaatkan sebagai media
+                    untuk mengembangkan bisnis kuliner.
+                </p>
+
+            </div>
+
+
+            <div class="business-container">
+
+
+                <!-- MANFAAT -->
+
+                <div class="business-card">
+
+                    <h3>
+                        1. Manfaat Blog bagi Bisnis Kuliner
+                    </h3>
+
+                    <p>
+                        Blog dapat membantu bisnis kuliner dalam
+                        memperkenalkan produk kepada masyarakat,
+                        meningkatkan brand awareness, memberikan
+                        informasi mengenai menu, serta menarik
+                        calon pelanggan melalui artikel dan foto
+                        makanan yang menarik.
+                    </p>
+
+                </div>
+
+
+                <!-- FITUR -->
+
+                <div class="business-card">
+
+                    <h3>
+                        2. Fitur Blogger yang Bisa Digunakan
+                    </h3>
+
+                    <p>
+                        Beberapa fitur Blogger yang dapat digunakan
+                        untuk bisnis kuliner antara lain postingan
+                        artikel, label untuk mengelompokkan konten,
+                        penambahan gambar dan video, halaman informasi,
+                        statistik blog, serta kolom komentar untuk
+                        berinteraksi dengan pembaca.
+                    </p>
+
+                </div>
+
+
+                <!-- KOMENTAR -->
+
+                <div class="business-card">
+
+                    <h3>
+                        3. Fitur Komentar
+                    </h3>
+
+                    <p>
+                        Blog ini sudah menyediakan fitur komentar
+                        yang dapat digunakan oleh pembaca untuk
+                        memberikan tanggapan, pertanyaan, maupun
+                        pendapat mengenai artikel kuliner yang
+                        tersedia.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= KOMENTAR ================= -->
+
+    <section class="comment-section" id="komentar">
+
+        <div class="container">
+
+            <div class="comment-box">
+
+                <h2>
+                    Tinggalkan Komentar
+                </h2>
+
+                <p>
+                    Bagikan pendapatmu tentang artikel kuliner
+                    yang ada di blog ini.
+                </p>
+
+                <form class="comment-form">
+
+                    <input
+                        type="text"
+                        placeholder="Nama kamu"
+                        required
+                    >
+
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        required
+                    >
+
+                    <textarea
+                        placeholder="Tulis komentar kamu..."
+                        required
+                    ></textarea>
+
+                    <button type="submit">
+                        Kirim Komentar
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h3>
+            Rasa Nusantara
+        </h3>
+
+        <p>
+            Menjelajahi Indonesia melalui cita rasa.
+        </p>
+
+        <p>
+            © 2026 Rasa Nusantara | Blog Kuliner
+        </p>
+
+    </footer>
+
+</body>
+</html>
+```
